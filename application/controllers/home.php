@@ -10,7 +10,15 @@ class Home_Controller extends Base_Controller {
 	 */
 	public function action_index() {
 		
-		return View::make('home.index');
+		//тестово грузим проекты, к которым он имеет доступ
+		$yt_client = Auth::user()->youtrack;
+		$projects  = $yt_client->get_accessible_projects();
+		
+		return View::make('home.index')->with(array(
+			
+			'username' => Auth::user()->username,
+			'projects' => $projects
+		));
 	}
 	
 	/**
