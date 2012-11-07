@@ -28,6 +28,9 @@ class YouTrackAuth extends Laravel\Auth\Drivers\Driver {
 	 */
 	public function attempt($arguments = array()) {
 
+		//$youtrack = new \YouTrack\Connection('http://yt.maksimal.net', $arguments['username'], $arguments['password']);
+		//var_dump($youtrack);die;
+
 		$user = array(
 
 			'id'       => 1,
