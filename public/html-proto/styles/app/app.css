@@ -2306,7 +2306,7 @@ table th[class*="span"],
 .open {
   *z-index: 1000;
 }
-.open  > .dropdown-menu {
+.open > .dropdown-menu {
   display: block;
 }
 .pull-right > .dropdown-menu {
@@ -3844,9 +3844,10 @@ body {
 .column-line_task {
   min-height: 100px;
 }
-.column-line_header h4 {
+.task-column-header h4 {
   font-size: 16px;
   font-weight: normal;
+  background: #ccc;
 }
 .task-item {
   border: 1px solid #000;
