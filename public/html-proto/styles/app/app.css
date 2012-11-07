@@ -3880,7 +3880,11 @@ body {
 .modal form {
   margin: 0 !important;
 }
-.task-edit-body textarea {
+.modal .task-edit-body textarea {
   min-height: 150px;
   width: 515px !important;
+}
+.modal .task-edit-performer select {
+  width: 115px;
+  margin: 0 !important;
 }
