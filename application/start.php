@@ -60,6 +60,7 @@ Laravel\Autoloader::$aliases = $aliases;
 
 Autoloader::map(array(
 	'Base_Controller' => path('app').'controllers/base.php',
+	'YouTrack\\Connection' => path('app').'libraries/youtrack_client/youtrackclient.php',
 ));
 
 /*
