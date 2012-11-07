@@ -298,9 +298,30 @@ class Role extends YouTrackObject {
  * A class describing a youtrack project.
  */
 class Project extends YouTrackObject {
-  public function __construct(\SimpleXMLElement $xml = NULL, Connection $youtrack = NULL) {
-    parent::__construct($xml, $youtrack);
-  }
+	
+	protected $users_list = array();
+
+	public function __construct(\SimpleXMLElement $xml = NULL, Connection $youtrack = NULL) {
+		parent::__construct($xml, $youtrack);
+
+		//собираем данные о привязанных пользователях
+		$users_list = array();
+		if (isset($xml->assigneesLogin)) {
+
+			$users = (array) $xml->assigneesLogin;
+			foreach ($users['sub'] as $user) {
+
+				$tmp = (array) $user;
+				$users_list[] = $tmp['@attributes']['value'];
+			}
+		}
+
+		$this->users_list = $users_list;
+	}
+	
+	public function get_users() {
+		return $this->users_list;
+	}
 
   public function get_subsystems() {
     return $this->youtrack->get_subsystems($this->id);

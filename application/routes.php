@@ -30,6 +30,7 @@ Route::get('/', array('before' => 'auth', 'uses' => 'home@index'));
  */
 Route::get('/tasks/all_issues', array('before' => 'auth', 'uses' => 'tasks@all_issues'));
 Route::get('/tasks/all_users',  array('before' => 'auth', 'uses' => 'tasks@all_users'));
+Route::get('/tasks/test',  array('before' => 'auth', 'uses' => 'tasks@test'));
 
 /*
 |--------------------------------------------------------------------------
