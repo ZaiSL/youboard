@@ -36,5 +36,6 @@
 return array(
 
 	'docs' => array('handles' => 'docs'),
+	'youtrackauth' => array('auto' => true),
 
 );
