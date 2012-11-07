@@ -41,3 +41,4 @@ publish
 /storage/logs/
 /storage/sessions/
 /storage/work/
+/application/config/youtrack_users.php
