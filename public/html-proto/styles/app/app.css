@@ -2306,7 +2306,7 @@ table th[class*="span"],
 .open {
   *z-index: 1000;
 }
-.open > .dropdown-menu {
+.open  > .dropdown-menu {
   display: block;
 }
 .pull-right > .dropdown-menu {
@@ -3891,4 +3891,9 @@ body {
 .modal .task-edit-performer select {
   width: 115px;
   margin: 0 !important;
+}
+.ui-sortable-placeholder {
+  background-color: #f0f0f0;
+  visibility: visible !important;
+  border: 0;
 }

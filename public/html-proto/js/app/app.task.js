@@ -28,5 +28,31 @@ $(function() {
         }
     }); 
 
-    $('.draggable').draggable({snap: ".column-line_task", snapMode: "inner", snapTolerance: 50});
+    //$('.draggable').draggable({snap: ".column-line_task", snapMode: "inner", snapTolerance: 50});
+    $('.column-line_task').sortable({connectWith: '.ui-sortable'});
+
+    /*$(".droppable").droppable({
+        tolerance: "intersect",
+        accept: ".draggable",
+        //activeClass: "ui-state-default",
+        //hoverClass: "ui-state-hover",
+        drop: function(event, ui) {      
+            //$(this).sortable();  
+            $(this).prepend($(ui.draggable));
+            $('.placeholder').remove();
+        },
+        over: function(event, ui) {
+            //var plch = '<div class="placeholder"></div>';
+            //$(ui.draggable).sortable( { placeholder: "sortable-placeholder" }, $(this), document.body );
+            $(this).prepend('<div class="placeholder"></div>');
+        },
+        activate: function(event, ui) {
+            //$(ui.draggable).hide();
+            $(this).sortable({placeholder: "srt-p"}, $(ui.draggable))
+        },
+        out: function(event, ui) {
+            $('.placeholder').remove();
+        }
+
+});*/
 });
