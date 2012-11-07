@@ -62,6 +62,26 @@ class Tasks_Controller extends Base_Controller {
 	}
 	
 	/**
+	 * Получение списка спринтов нашего проекта
+	 */
+	public function get_all_sprints() {
+		
+		$yt_client = Auth::user()->youtrack;
+		
+		$projects = $yt_client->get_accessible_projects();
+		foreach($projects as $project) {
+			
+			if ($project->shortName == Config::get('youtrack.project')) {
+				
+				$versions = str_replace(array(']','['),'',$project->versions);
+				return json_encode(explode(', ', $versions));
+			}
+		}
+		
+		return json_encode(array());
+	}
+	
+	/**
 	 * Тестовый метод, в нем можно делать все что угодно
 	 */
 	public function get_test() {
