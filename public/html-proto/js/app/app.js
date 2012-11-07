@@ -8,6 +8,17 @@ var _app = Backbone.View.extend({
 
     initialize: function () {
 	    this.window_task = $('#modal-task');
+
+        Tasks.fetch({
+            success: function(){
+                if(Tasks.length > 0){
+                    console.log(Tasks)
+                }
+            },
+            error:function () {
+                console.log('ERROR Contacts.fetch');
+            }
+        })
     },
 
 	openTaskWindow: function(){

@@ -8,3 +8,9 @@ var TaskModel = Backbone.Model.extend({
         };
     }
 })
+
+var TasksCollection = Backbone.Collection.extend({
+    model: TaskModel,
+    url: '/tasks/all_issues'
+})
+var Tasks = new TasksCollection;
