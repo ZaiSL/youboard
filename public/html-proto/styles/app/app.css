@@ -2306,7 +2306,7 @@ table th[class*="span"],
 .open {
   *z-index: 1000;
 }
-.open  > .dropdown-menu {
+.open > .dropdown-menu {
   display: block;
 }
 .pull-right > .dropdown-menu {
@@ -3828,22 +3828,26 @@ input[type="submit"].btn.btn-mini {
 body {
   padding: 50px 0 0 0;
 }
-.colum-header {
+.column-header {
   font-size: 13px;
   color: #606060;
   border-bottom: 1px solid #000;
 }
-.colum-header h3 {
+.column-header h3 {
   font-size: 15px;
   font-weight: normal;
 }
-.colum-line_task {
-  min-height: 100px;
+.column-line {
+  min-height: 150px;
   background: url(../../img/bg-set.png);
 }
-.colum-line_header h4 {
+.column-line_task {
+  min-height: 100px;
+}
+.task-column-header h4 {
   font-size: 16px;
   font-weight: normal;
+  background: #ccc;
 }
 .task-item {
   border: 1px solid #000;
