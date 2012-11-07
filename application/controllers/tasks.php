@@ -7,28 +7,85 @@ class Tasks_Controller extends Base_Controller {
 	public $restful = true;
 	
 	/**
-	 * Список тикетов
+	 * Список тикетов для проекта по заданному поисковому запросу
 	 */
 	public function get_all_issues() {
 
 		$yt_client = Auth::user()->youtrack;
-		$result = array();
+		
+		$top_tasks = array();
+		$common_tasks = array();
 		
 		$issues = $yt_client->get_issues('zfm',Config::get('youtrack.query'),0,1000);
 		foreach($issues as $issue) {
-			$result[] = $issue->get_attributes();
+			
+			$attributes = $issue->get_attributes();
+			$links = $issue->get_issue_links();
+			$issue_links = isset($links[0]) ? $links[0] : array();
+			
+			//если нет связей, значит задача висящая просто вверху
+			if (!isset($issue_links->source)) {
+				
+				$top_tasks[] = $attributes;
+			}
+			else {
+				
+				if (!isset($common_tasks[$issue_links->source])) {
+					
+					$common_tasks[$issue_links->source]['tasks'] = array();
+					$common_tasks[$issue_links->source]['title'] = '';
+				}
+				$common_tasks[$issue_links->source]['tasks'][] = $attributes;
+			}
 		}
-		
+		$result = array('top' => array('title' => 'TOP', 'tasks' => $top_tasks)) + $common_tasks;
+
 		return json_encode($result);
 	}
 	
 	/**
-	 * Список пользователей ютрека
+	 * Список пользователей ютрека для нашего проекта
 	 */
 	public function get_all_users() {
 		
-		$users = require_once(path('app').'config/youtrack_users.php');
+		$yt_client = Auth::user()->youtrack;
 		
-		return json_encode($users);
+		$projects = $yt_client->get_accessible_projects();
+		foreach($projects as $project) {
+			
+			if ($project->shortName == Config::get('youtrack.project')) {
+				return json_encode($project->get_users());
+			}
+		}
+
+		return json_encode(array());
+	}
+	
+	/**
+	 * Получение списка спринтов нашего проекта
+	 */
+	public function get_all_sprints() {
+		
+		$yt_client = Auth::user()->youtrack;
+		
+		$projects = $yt_client->get_accessible_projects();
+		foreach($projects as $project) {
+			
+			if ($project->shortName == Config::get('youtrack.project')) {
+				
+				$versions = str_replace(array(']','['),'',$project->versions);
+				return json_encode(explode(', ', $versions));
+			}
+		}
+		
+		return json_encode(array());
+	}
+	
+	/**
+	 * Тестовый метод, в нем можно делать все что угодно
+	 */
+	public function get_test() {
+		
+		echo 123;
 	}
 }

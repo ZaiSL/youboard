@@ -264,16 +264,37 @@ class Connection {
   }
 
   public function import_issues_xml($project_id, $assignee_group, $xml) {
-    throw new NotImplementedException("import_issues_xml(project_id, assignee_group, xml)");
+		$url = '/import/' . $project_id . '/issues?' . $assignee_group;
+		
+		return $this->_request_xml('PUT', $url, $xml, 400);
   }
 
   public function import_links($links) {
     throw new NotImplementedException("import_links(links)");
   }
 
-  public function import_issues($project_id, $assignee_group, $issues) {
-    throw new NotImplementedException("import_issues(project_id, assignee_group, issues)");
-  }
+	public function import_issues($project_id, $assignee_group, $issues) {
+
+		if (count($issues) <= 0) {
+			return;
+		}
+
+		$xml = "<issues>\n";
+		
+		foreach ($issues as $issue) {
+			$xml .= "  <issue>\n";
+
+			foreach ($issue as $key => $value) {
+				$xml .= '<field name="' . $key . '"><value>' . urlencode($value) . '</value></field>';
+			}
+
+			$xml .= "</issue>\n";
+		}
+		
+		$xml .= "</issues>\n";
+
+		return $this->import_issues_xml($project_id, $assignee_group, $xml);
+	}
 
   public function get_project($project_id) {
     return new Project($this->_get('/admin/project/'. urlencode($project_id)));
