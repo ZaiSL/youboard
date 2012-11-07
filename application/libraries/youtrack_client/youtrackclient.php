@@ -195,6 +195,10 @@ class Issue extends YouTrackObject {
     }
     return $this->links;
   }
+  
+  public function get_attributes() {
+	  return $this->attributes;
+  }
 }
 
 /**
