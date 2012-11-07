@@ -12,6 +12,9 @@ return array(
 	 */
 	'query' => '#{Sprint #6}',
 	
+	
+	'query' => '#{TechWe #1 YouBoard}',
+	
 	/**
 	 * Название проекта
 	 */

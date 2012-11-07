@@ -85,7 +85,54 @@ class Tasks_Controller extends Base_Controller {
 	 * Тестовый метод, в нем можно делать все что угодно
 	 */
 	public function get_test() {
+		$yt_client = Auth::user()->youtrack;
 		
-		echo 123;
+		$top_tasks = array();
+		$common_tasks = array();
+		
+		//$issues = $yt_client->get_issues('zfm',Config::get('youtrack.query'),0,1000);
+//		echo '<pre>';
+//		print_r($issues[24]);
+		
+//		print_r($issues[24]->attributes);
+
+/*
+            [priority] => 3
+            [type] => Task
+            [state] => Submitted
+            [subsystem] => No subsystem
+            [id] => zfm-653
+            [fixedVersion] => TechWe #1 YouBoard
+            [projectShortName] => zfm
+            [reporterName] => raplos
+            [updaterName] => raplos
+            [fixedInBuild] => Next build
+            [commentsCount] => 0
+            [numberInProject] => 653
+            [summary] => Слишком TESTo
+            [description] => Слишком, слишком тесто!
+            [created] => 1352287566562
+            [updated] => 1352287566562
+            [historyUpdated] => 1352287566562
+            [votes] => 0
+            [permittedGroup] => ZFM
+            [Default group] => ZFM
+            [Estimation] => 
+ */		
+		
+		
+		$issue = array(
+			'numberInProject' => '653',
+//			'summary' => 'TEST: ' . time(),
+//			'description' => 'TEST: ' . time(),
+//			'created' => '1352287566562',
+//			'updated' => '',
+//			'reporterName' => 'raplos',
+//			'updaterName' => ''
+		);
+		
+		echo $yt_client->import_issues(Config::get('youtrack.project'), Config::get('youtrack.assignee_group'), array($issue));
+		
+//		echo 123;
 	}
 }

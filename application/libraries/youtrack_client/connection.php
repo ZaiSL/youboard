@@ -264,8 +264,8 @@ class Connection {
   }
 
   public function import_issues_xml($project_id, $assignee_group, $xml) {
-		$url = '/import/' . $project_id . '/issues?' . $assignee_group;
-		
+		$url = '/import/' . $project_id . '/issues&test=true';
+
 		return $this->_request_xml('PUT', $url, $xml, 400);
   }
 
@@ -275,25 +275,58 @@ class Connection {
 
 	public function import_issues($project_id, $assignee_group, $issues) {
 
-		if (count($issues) <= 0) {
+		if (!count($issues)) {
 			return;
 		}
 
 		$xml = "<issues>\n";
 		
 		foreach ($issues as $issue) {
-			$xml .= "  <issue>\n";
+			$xml .= "<issue>\n";
 
 			foreach ($issue as $key => $value) {
-				$xml .= '<field name="' . $key . '"><value>' . urlencode($value) . '</value></field>';
+				$xml .= '    <field name="' . $key . '">' . "\n";
+				$xml .= '        <value>' . urlencode($value) . '</value>' . "\n"; 
+				$xml .= '    </field>' . "\n";
 			}
 
 			$xml .= "</issue>\n";
 		}
 		
 		$xml .= "</issues>\n";
-
-		return $this->import_issues_xml($project_id, $assignee_group, $xml);
+/*		
+		$xml = '
+			<issues><issue>
+				<field name="numberInProject">
+					<value>653</value>
+				</field>
+				<field name="summary">
+					<value>TEST_TITLE</value>
+				</field>
+				<field name="description">
+					<value>TEST_TEXT</value>
+				</field>
+				<field name="created">
+					<value>1352287566562</value>
+				</field>
+				<field name="updated">
+					<value>1352287566562</value>
+				</field>
+				<field name="updaterName">
+					<value>raplos</value>
+				</field>
+				<field name="reporterName">
+					<value>raplos</value>
+				</field>
+			</issue></issues>
+		';
+ * 
+ */
+		
+//echo $xml; exit();
+		
+		
+		return $this->import_issues_xml('zfm'/*$project_id*/, $assignee_group, $xml);
 	}
 
   public function get_project($project_id) {
