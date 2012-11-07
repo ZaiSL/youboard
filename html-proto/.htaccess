@@ -1,0 +1,2 @@
+# отправлять заголовки что содержимое в UTF-8
+AddDefaultCharset UTF-8
