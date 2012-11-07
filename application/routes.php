@@ -20,11 +20,14 @@ Route::post('auth_me', function() {
 	}
 });
 
+/**
+ * Главная страница
+ */
+Route::get('/', array('before' => 'auth', 'uses' => 'home@index'));
 
-Route::get('/', array('before' => 'auth', function() {
-	
-	return View::make('home.index');
-}));
+Route::get('/tasks/all', array('before' => 'auth', 'uses' => 'tasks@all'));
+
+//Route::controller(array('tasks'));
 
 /*
 |--------------------------------------------------------------------------
