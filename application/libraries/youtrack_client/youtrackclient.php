@@ -41,9 +41,15 @@ class YouTrackException extends \Exception {
     $previous = NULL;
     $message = "Error for '" . $url . "': " . $response['http_code'];
     if (!empty($response['content_type']) && !preg_match('/text\/html/', $response['content_type'])) {
-      $xml = simplexml_load_string($content);
-      $error = new YouTrackError($xml);
-      $message .= ": " . $error->__get("error");
+	  if ($code != 403) {
+		  $xml = simplexml_load_string($content);
+		  $error = new YouTrackError($xml);
+		  $message .= ": " . $error->__get("error");
+	  }
+	  else {
+		  $message = 'Permission denied';
+	  }
+      
     }
     parent::__construct($message, $code, $previous);
   }

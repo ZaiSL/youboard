@@ -10,16 +10,11 @@ class YouTrackAuth extends Laravel\Auth\Drivers\Driver {
 	 */
 	public function retrieve($id) {
 		
-		if ($id) {
-
-			$user = array(
-
-				'id'       => 1,
-				'username' => 'admin',
-				'password' => 'admin',
-			);
-
-			return (object)$user;
+		$obj_serialized = Session::get('yt_object_'.$id);
+		if ($obj_serialized) {
+			
+			$user = unserialize($obj_serialized);
+			return $user;
 		}
 	}
 	
@@ -28,21 +23,33 @@ class YouTrackAuth extends Laravel\Auth\Drivers\Driver {
 	 */
 	public function attempt($arguments = array()) {
 
-		//$youtrack = new \YouTrack\Connection('http://yt.maksimal.net', $arguments['username'], $arguments['password']);
-		//var_dump($youtrack);die;
-
-		$user = array(
-
-			'id'       => 1,
-			'username' => 'admin',
-			'password' => 'admin',
-		);
-		
-		if ($user['username']==$arguments['username'] && $user['password']==$arguments['password']) {
+		try {
+			$youtrack = new \YouTrack\Connection(
+					Config::get('youtrack.url'), 
+					$arguments['username'], 
+					$arguments['password']
+			);
+		}
+		catch(Exception $e) {
 			
-			return $this->login(1, true);
+			$youtrack = null;
+		}
+
+		//если не удалось авторизоваться
+		if (!$youtrack) {
+			return false;
 		}
 		
-		return false;
+		//сериализуем наш объект в сессию, и в дальнейшем рабоаем с ним
+		$user_key = md5($arguments['username']);
+		$user = (object)array(
+			
+			'youtrack' => $youtrack,
+			'username' => $arguments['username'],
+			'id' => $user_key,
+		);
+		Session::put('yt_object_'.$user_key, serialize($user));
+		
+		return $this->login($user_key, true);
 	}
 }
