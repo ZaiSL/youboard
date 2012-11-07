@@ -3,11 +3,13 @@ var _app = Backbone.View.extend({
     el: $("body"),
 
     events: {
-	    "click .js-open_modal_task": "openTaskWindow"
+	    "click .js-open_modal_task": "openTaskWindow",
+        "click .js-open_modal_add_task": "openAddTaskWindow"
     },
 
     initialize: function () {
 	    this.window_task = $('#modal-task');
+        this.window_add_task = $('#modal-add-task');
 
         Tasks.fetch({
             success: function(){
@@ -23,7 +25,11 @@ var _app = Backbone.View.extend({
 
 	openTaskWindow: function(){
 		this.window_task.modal('show');
-	}
+	},
+
+    openAddTaskWindow: function(){
+        this.window_add_task.modal('show');
+    }
 });
 
 var App = new _app;
