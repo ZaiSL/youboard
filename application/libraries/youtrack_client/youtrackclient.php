@@ -61,6 +61,7 @@ class YouTrackException extends \Exception {
 class YouTrackObject {
   protected $youtrack = NULL;
   protected $attributes = array();
+  protected $link_data = array();
 
   public function __construct(\SimpleXMLElement $xml = NULL, Connection $youtrack = NULL) {
     $this->youtrack = $youtrack;
@@ -68,8 +69,19 @@ class YouTrackObject {
       if (!($xml instanceof \SimpleXMLElement)) {
         throw new \Exception("An instance of SimpleXMLElement expected!");
       }
+	  
       $this->_update_attributes($xml);
       $this->_update_children_attributes($xml);
+	  
+	  foreach($xml->links as $link) {
+		  
+		  $link_in = (array)$link->issueLink;
+		  if (isset($link_in['@attributes'])) {
+			  
+			  $link_object = (object)$link_in['@attributes'];
+			  $this->link_data[] = $link_object;
+		  }
+	  }
     }
   }
 
@@ -196,8 +208,26 @@ class Issue extends YouTrackObject {
     return $this->links;
   }
   
+  /**
+   * Получение некоторых атрибутов задачи
+   */
   public function get_attributes() {
-	  return $this->attributes;
+	  
+	  $return = array();
+	  
+	  $allowed = array('type', 'state', 'id', 'assigneeName', 'summary');
+	  foreach($allowed as $key) {
+		  $return[$key] = isset($this->attributes[$key]) ? $this->attributes[$key] : '';
+	  }
+	  
+	  return $return;
+  }
+  
+  /**
+   * Данные о связи задачи с другими
+   */
+  public function get_issue_links() {
+	  return $this->link_data;
   }
 }
 

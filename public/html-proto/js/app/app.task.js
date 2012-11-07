@@ -28,5 +28,5 @@ $(function() {
         }
     }); 
 
-    $(".draggable").draggable({snap: ".colum-line_task", snapMode: "inner", snapTolerance: 50});
+    $('.draggable').draggable({snap: ".column-line_task", snapMode: "inner", snapTolerance: 50});
 });

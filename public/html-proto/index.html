@@ -26,7 +26,7 @@
 
             <div class="nav-collapse collapse">
                 <ul class="nav">
-                    <li><a href="#">Добавить задачу</a></li>
+                    <li><a href="#" class="js-open_modal_add_task">Добавить задачу</a></li>
                     <li><a href="#">Добавить фичу</a></li>
                 </ul>
                 <form class="navbar-form pull-right">
@@ -48,12 +48,6 @@
                 <div class="column-header">
                     <h3>Submitted</h3>
                 </div>
-                <div class="colum-line">
-                    <div class="colum-line_header">
-                        <h4><a href="">zfm-629</a>Прототип HTML</h4>
-                    </div>
-                    <div class="colum-line_task">
-                        <div class="task-item">
             </div>
             <div class="span3">
                 <div class="column-header">
@@ -109,7 +103,7 @@
             <div class="span3">
                 <div class="column-line">
                     <div class="column-line_task">
-                        <div class="task-item">
+                        <div class="task-item draggable">
                             <div class="task-item_header">
                                 <h5 class="">Вёрстка задачи на доске</h5><span class="task-item_time">?</span>
                             </div>
@@ -135,7 +129,7 @@
                             </div>
                         </div>
 
-                        <div class="task-item">
+                        <div class="task-item draggable">
                             <div class="task-item_header">
                                 <h5 class="">Вёрстка задачи на доске</h5><span class="task-item_time">?</span>
                             </div>
@@ -153,7 +147,7 @@
             <div class="span3">
                 <div class="column-line">
                     <div class="column-line_task">
-                        <div class="task-item">
+                        <div class="task-item draggable">
                             <div class="task-item_header">
                                 <h5 class="">Вёрстка задачи на доске</h5><span class="task-item_time">?</span>
                             </div>
@@ -171,7 +165,7 @@
             <div class="span3">
                 <div class="column-line">
                     <div class="column-line_task">
-                        <div class="task-item">
+                        <div class="task-item draggable">
                             <div class="task-item_header">
                                 <h5 class="">Вёрстка задачи на доске</h5><span class="task-item_time">?</span>
                             </div>
@@ -189,7 +183,7 @@
             <div class="span3">
                 <div class="column-line">
                     <div class="column-line_task">
-                        <div class="task-item">
+                        <div class="task-item draggable">
                             <div class="task-item_header">
                                 <h5 class="">Вёрстка задачи на доске</h5><span class="task-item_time">?</span>
                             </div>
@@ -221,6 +215,21 @@
     </div>
 </div>
 
+<!-- Модалка добовления задачи -->
+<div class="modal hide fade" id="modal-add-task">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Modal header</h3>
+    </div>
+    <div class="modal-body">
+        <p>One fine body…</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn">Close</a>
+        <a href="#" class="btn btn-primary">Save changes</a>
+    </div>
+</div>
+
 
 <!-- Шаблон задачи на доске -->
 <script type="text/template" id="template-task_onboard"></script>
@@ -234,6 +243,7 @@
 <script src="js/lib/backbone.js"></script>
 <script src="js/lib/bootstrap.js"></script>
 <script src="js/app/app.tasks.js"></script>
+<script src="js/app/app.task.js"></script>
 <script src="js/app/app.js"></script>
 
 

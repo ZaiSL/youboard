@@ -12,13 +12,34 @@ class Tasks_Controller extends Base_Controller {
 	public function get_all_issues() {
 
 		$yt_client = Auth::user()->youtrack;
-		$result = array();
+		
+		$top_tasks = array();
+		$common_tasks = array();
 		
 		$issues = $yt_client->get_issues('zfm',Config::get('youtrack.query'),0,1000);
 		foreach($issues as $issue) {
-			$result[] = $issue->get_attributes();
+			
+			$attributes = $issue->get_attributes();
+			$links = $issue->get_issue_links();
+			$issue_links = isset($links[0]) ? $links[0] : array();
+			
+			//если нет связей, значит задача висящая просто вверху
+			if (!isset($issue_links->source)) {
+				
+				$top_tasks[] = $attributes;
+			}
+			else {
+				
+				if (!isset($common_tasks[$issue_links->source])) {
+					
+					$common_tasks[$issue_links->source]['tasks'] = array();
+					$common_tasks[$issue_links->source]['title'] = '';
+				}
+				$common_tasks[$issue_links->source]['tasks'][] = $attributes;
+			}
 		}
-		
+		$result = array('top' => array('title' => 'TOP', 'tasks' => $top_tasks)) + $common_tasks;
+
 		return json_encode($result);
 	}
 	
