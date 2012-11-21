@@ -1,10 +1,5 @@
 
 
-var App = {
-        JST : {}
-    };
-
-
 
 
 $(function (){
