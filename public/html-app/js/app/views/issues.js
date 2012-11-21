@@ -7,6 +7,8 @@
 App.IssueView = Backbone.View.extend({
 
     template : App.JST['issues/issue'],
+    tagName : App.JST['issues/issue'].tagName,
+    className : App.JST['issues/issue'].className,
 
     events : {
 
@@ -14,11 +16,8 @@ App.IssueView = Backbone.View.extend({
     },
 
     initialize : function (){
-        this.tagName = this.template.tagName;
-        this.className = this.template.className;
 
     },
-
 
     render : function (){
 
@@ -38,6 +37,9 @@ App.IssueView = Backbone.View.extend({
 App.FeatureView = Backbone.View.extend({
 
     template : App.JST['issues/feature'],
+    className : App.JST['issues/feature'].className,
+    tagName : App.JST['issues/feature'].tagName,
+
 
     events : {
 
@@ -45,8 +47,6 @@ App.FeatureView = Backbone.View.extend({
     },
 
     initialize : function (){
-        this.tagName = this.template.tagName;
-        this.className = this.template.className;
     },
 
 
@@ -75,8 +75,6 @@ App.IssuesGroupView = Backbone.View.extend({
     },
 
     initialize : function (){
-        this.tagName = this.template.tagName;
-        this.className = this.template.className;
 
         this.$el.html(this.template.layout);
         this.$columns = this.$('.column-line');
