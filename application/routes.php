@@ -9,7 +9,7 @@ Route::get('login', 'home@login');
  * Попытка авторизации пользователя
  */
 Route::post('auth_me', function() {
-	
+
 	if (Auth::attempt($_POST)) {
 		
 		return Redirect::to('/');
