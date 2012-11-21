@@ -128,6 +128,8 @@ App.BoardView = Backbone.View.extend({
 
     initialize : function (){
 
+        var self = this;
+
         this.collection.bind('reset', this.render, this);
 
         this.$el.html(this.template.layout);
@@ -135,13 +137,34 @@ App.BoardView = Backbone.View.extend({
         this.$groupsContainer = this.$('.issues-groups');
 
 
-        //разбили по группам
+        var features = new App.Issues(this.collection.filter(function (issue){
+            return issue.get('is_feature')==1;
+        }));
+
+
+        //разбиваем по группам
+
+        //самая первая группа - с ишью, не привязанными ни к какой фиче
         this.groups = [
             {
                 feature : null,
-                issues : this.collection
+                issues : new App.Issues(this.collection.filter(function (issue){
+                    return !issue.get('is_feature') && issue.get('parent_feature') == 0;
+                }))
             }
         ];
+
+        features.each(function(feature){
+
+            self.groups.push({
+                feature : feature,
+                issues : new App.Issues(self.collection.filter(function (issue){
+                    return !issue.get('is_feature') && issue.get('parent_feature') == feature.id;
+                }))
+            });
+
+        });
+
 
     },
 
