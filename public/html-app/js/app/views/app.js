@@ -20,14 +20,19 @@ App.AppView = Backbone.View.extend({
 
     render : function (){
 
-        App.issues = new App.Issues();
+        App.issues = new App.Issues(App.Storage.Issues);
+        App.users = new App.Users(App.Storage.Users);
+
+        App.Settings.currentUser = App.users.get(App.Settings.currentUserId);
+
+        console.log(App.Settings.currentUser.toJSON());
 
         this.boardView = new App.BoardView({
             //el : $('wrapper'),
             collection : App.issues
         });
 
-        App.issues.fetch();
+
 
     },
 
