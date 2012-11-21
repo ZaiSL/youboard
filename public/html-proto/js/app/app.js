@@ -18,7 +18,7 @@ var _app = Backbone.View.extend({
                 }
             },
             error:function () {
-                console.log('ERROR Contacts.fetch');
+                console.log('ERROR Tasks.fetch');
             }
         })
     },
@@ -28,7 +28,7 @@ var _app = Backbone.View.extend({
 	},
 
     openAddTaskWindow: function(){
-        this.window_add_task.modal('show');
+		this.window_add_task.modal('show');
     }
 });
 

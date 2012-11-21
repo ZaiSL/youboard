@@ -30,7 +30,7 @@
                     <li><a href="#">Добавить фичу</a></li>
                 </ul>-->
                 <form class="navbar-form pull-right">
-                    <button class="btn btn-primary js-open_modal_task" type="button">
+                    <button class="btn btn-primary js-open_task" type="button">
                        Всплывайко задачи
                     </button>
                 </form>
@@ -241,6 +241,64 @@
     </div>
 </div>
 
+<div class="issue-panel" style="display: none">
+
+    <div class="issue-header">
+        <div class="i-id"><span>#415</span></div>
+        <div class="i-title_and_info">
+            <h2>Хочу не терять девочек, за которых голосовал</h2>
+            <ul class="i-info">
+                <li class="i-info_owner">
+                    <a href="#">
+                        <img alt="" src="img/temp-img.png">
+                        Psevdonim
+                    </a>
+                </li>
+                <li class="i-info_date">21.10.2012 в 15:25</li>
+                <li class="i-info_project">ZFM</li>
+                <li class="i-info_remove"><span class="pseudolink">удалить</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="issue-body">
+
+        <div class="issue-description">
+            Должен быть какой-то раздел, в котором пользователь может видеть за кого он голосовал и
+            сколько именно голосов он потратил на ту или иную участницу
+        </div>
+
+        <div class="issue-subtasks">
+            <h3>Задачи:</h3>
+            <ol>
+                <li>Вывести пункт меню "История голосований"</li>
+                <li>Сверстать страничку, на которой выводятися все участницы</li>
+                <li>Закодить страничку (выводить по 10 записей на страницу)</li>
+                <li class="new-subtask"><input type="text" class="new-subtask_input"></li>
+            </ol>
+        </div>
+
+        <div class="issue-attachments">
+            <ul>
+                <li>30-10-2012 14-10-29.png</li>
+                <li>bg-first-place.png</li>
+            </ul>
+            <button>Прикрепить файл</button>
+        </div>
+    </div>
+
+    <div class="issue-footer">
+        <ul class="issue-attributes">
+            <li class="ia-assigned_to"><img alt="" src="img/temp-img.png"></li>
+            <li class="ia-type_and_stage">
+                <span class="type">UserStory</span>
+                <span class="stage">In Progress</span>
+            </li>
+            <li class="ia-estimate">8</li>
+        </ul>
+    </div>
+</div>
+
 
 <!-- Шаблон задачи на доске -->
 <script type="text/template" id="template-task_onboard"></script>
@@ -257,6 +315,7 @@
 <script src="js/app/app.tasks.js"></script>
 <script src="js/app/app.task.js"></script>
 <script src="js/app/app.js"></script>
+<script src="js/app/temp.zaisl.js"></script>
 
 
 </body>
