@@ -3954,6 +3954,7 @@ body {
   font-size: 13px !important;
   padding: 0 !important;
   margin: 0;
+  color: #000;
 }
 .task-item_content p {
   font-size: 12px;
