@@ -3843,7 +3843,7 @@ body {
   color: #ffffff;
 }
 .container-fluid.board {
-  background: url(../../img/bg/bg-board.png);
+  background: url(../../img/bg/bg-board.jpg);
   padding: 0;
 }
 .container-fluid.board .board-wrap {
@@ -3885,6 +3885,7 @@ body {
   float: left;
   color: white;
   padding: 8px 20px 0 12px;
+  font-weight: bold;
 }
 .container-fluid.board .board-wrap .feature-line,
 .container-fluid.board .board-wrap .parentless-line {
@@ -3903,28 +3904,57 @@ body {
 .task-item {
   margin-bottom: 20px;
   padding: 0 10px 0px 10px;
-  border: 1px solid #000;
   background-color: #fbf0ac;
+  box-shadow: 1px 2px 5px -2px #000000;
 }
-.task-item_header {
+.task-item .task-item_header {
   *zoom: 1;
   margin: 0 -10px;
   padding: 5px 10px;
   border-bottom: 1px solid #d8c870;
   background-color: #eddd82;
 }
-.task-item_header:before,
-.task-item_header:after {
+.task-item .task-item_header:before,
+.task-item .task-item_header:after {
   display: table;
   content: "";
   line-height: 0;
 }
-.task-item_header:after {
+.task-item .task-item_header:after {
   clear: both;
 }
+.task-item .task-item_header a {
+  color: #584A09;
+  font-size: 11px;
+}
+.task-item.us {
+  background: #D8F8FF;
+}
+.task-item.us .task-item_header {
+  background: #A7E2EF;
+  border-bottom: 1px solid #92CBD8;
+}
+.task-item.us .task-item_header a {
+  color: #17736D;
+}
+.task-item.bug {
+  background: #FAE0EF;
+}
+.task-item.bug .task-item_header {
+  background: #DE95C1;
+  border-bottom: 1px solid #C27AA5;
+}
+.task-item.bug .task-item_header a {
+  color: #8D356A;
+}
+.task-item_content {
+  padding-top: 8px;
+}
 .task-item_content h5 {
-  width: 80%;
-  float: left;
+  font-size: 13px !important;
+  padding: 0 !important;
+  margin: 0;
+  color: #000;
 }
 .task-item_content p {
   font-size: 12px;
@@ -3988,7 +4018,7 @@ body {
   height: 100%;
   background: #D8F8FF;
   overflow: hidden;
-  box-shadow: -2px 1px 10px 0px #7c7c7c;
+  box-shadow: 5px 1px 30px 0 #000000;
 }
 .issue-add-panel form.form-horizontal {
   padding: 40px 30px 20px 30px;
@@ -4018,7 +4048,7 @@ body {
   height: 100%;
   background: #D8F8FF;
   overflow: hidden;
-  box-shadow: -2px 1px 10px 0px #7c7c7c;
+  box-shadow: 5px 1px 30px 0 #000000;
 }
 .issue-header {
   padding: 20px 20px 0 20px;
