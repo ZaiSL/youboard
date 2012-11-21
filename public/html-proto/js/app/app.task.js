@@ -31,6 +31,8 @@ $(function() {
     //$('.draggable').draggable({snap: ".column-line_task", snapMode: "inner", snapTolerance: 50});
     $('.column-line_task').sortable({connectWith: '.ui-sortable'});
 
+	$('.feature-line .column-line').equalHeights();
+
     /*$(".droppable").droppable({
         tolerance: "intersect",
         accept: ".draggable",

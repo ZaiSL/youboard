@@ -21,14 +21,14 @@
 
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
-        <div class="container">
+
             <a class="brand" href="#">Sprint #6</a>
 
             <div class="nav-collapse collapse">
-                <ul class="nav">
+                <!--<ul class="nav">
                     <li><a href="#" class="js-open_modal_add_task">Добавить задачу</a></li>
                     <li><a href="#">Добавить фичу</a></li>
-                </ul>
+                </ul>-->
                 <form class="navbar-form pull-right">
                     <button class="btn btn-primary js-open_modal_task" type="button">
                        Всплывайко задачи
@@ -36,42 +36,39 @@
                 </form>
             </div>
             <!--/.nav-collapse -->
-        </div>
+
     </div>
 </div>
 
-<div class="container-fluid">
-    <div class="borad-wrap">
+<div class="container-fluid board">
+    <div class="board-wrap">
 
         <div class="row-fluid">
             <div class="span3">
                 <div class="column-header">
-                    <h3>Submitted</h3>
+					<h3><span>Submitted</span></h3>
                 </div>
             </div>
             <div class="span3">
                 <div class="column-header">
-                    <h3>In Progress</h3>
+                    <h3><span>In Progress</span></h3>
                 </div>
             </div>
             <div class="span3">
                 <div class="column-header">
-                    <h3>Test</h3>
+					<h3><span>Test</span></h3>
                 </div>
             </div>
             <div class="span3">
                 <div class="column-header">
-                    <h3>Done</h3>
+					<h3><span>Done</span></h3>
                 </div>
             </div>
         </div>
 
 
-        <div class="task-column-header">
-            <h4>пустые поля</h4>
-        </div>
 
-        <div class="row-fluid">
+        <div class="row-fluid parentless-line">
             <div class="span3">
                 <div class="column-line">
                     
@@ -96,105 +93,119 @@
 
 
         <div class="task-column-header">
-            <h4><a href="">zfm-629</a>Прототип HTML</h4>
+            <span class="task-column-header-number"><a href="">#629</a></span>
+			<span class="task-column-header-title">Прототип HTML</span>
         </div>
 
-        <div class="row-fluid">
+        <div class="row-fluid feature-line">
             <div class="span3">
                 <div class="column-line">
                     <div class="column-line_task" id="js-submitted">
-                        <div class="task-item">
-                            <div class="task-item_header">
-                                <h5 class="">Вёрстка задачи на доске</h5><span class="task-item_time">?</span>
-                            </div>
-                            <div class="task-item_content">
-                                <p>заголовок, колонтитул, коллектор, удар головой, шапка, хедер заголовок, колонтитул, коллектор, удар головой, шапка, хедер</p>
-                            </div>
-                            <div class="task-item_info clearfix">
-                                <a href="" class="pull-left">zfm-641</a>
-                                <a href="" class="pull-right"><img src="img/temp-img.png" alt=""></a>
-                            </div>
-                        </div>
 
                         <div class="task-item">
                             <div class="task-item_header">
-                                <h5 class="">Вёрстка задачи на доске</h5><span class="task-item_time">?</span>
+								<a href="" class="pull-left">#641</a>
+								<a href="" class="pull-right">ZFM</a>
                             </div>
                             <div class="task-item_content">
+								<h5 class="">Вёрстка задачи на доске</h5>
                                 <p>заголовок, колонтитул, коллектор, удар головой, шапка, хедер заголовок, колонтитул, коллектор, удар головой, шапка, хедер</p>
                             </div>
                             <div class="task-item_info clearfix">
-                                <a href="" class="pull-left">zfm-641</a>
-                                <a href="" class="pull-right"><img src="img/temp-img.png" alt=""></a>
+                                <a href="" class="pull-left"><img src="img/temp-img.png" alt=""></a>
+								<span class="task-item_time">?</span>
                             </div>
                         </div>
 
-                        <div class="task-item">
-                            <div class="task-item_header">
-                                <h5 class="">Вёрстка задачи на доске</h5><span class="task-item_time">?</span>
-                            </div>
-                            <div class="task-item_content">
-                                <p>заголовок, колонтитул, коллектор, удар головой, шапка, хедер заголовок, колонтитул, коллектор, удар головой, шапка, хедер</p>
-                            </div>
-                            <div class="task-item_info clearfix">
-                                <a href="" class="pull-left">zfm-641</a>
-                                <a href="" class="pull-right"><img src="img/temp-img.png" alt=""></a>
-                            </div>
-                        </div>
+						<div class="task-item">
+							<div class="task-item_header">
+								<a href="" class="pull-left">#641</a>
+								<a href="" class="pull-right">ZFM</a>
+							</div>
+							<div class="task-item_content">
+								<h5 class="">Вёрстка задачи на доске</h5>
+								<p>заголовок, колонтитул, коллектор, удар головой, шапка, хедер заголовок, колонтитул, коллектор, удар головой, шапка, хедер</p>
+							</div>
+							<div class="task-item_info clearfix">
+								<a href="" class="pull-left"><img src="img/temp-img.png" alt=""></a>
+								<span class="task-item_time">?</span>
+							</div>
+						</div>
+
+						<div class="task-item">
+							<div class="task-item_header">
+								<a href="" class="pull-left">#641</a>
+								<a href="" class="pull-right">ZFM</a>
+							</div>
+							<div class="task-item_content">
+								<h5 class="">Вёрстка задачи на доске</h5>
+								<p>заголовок, колонтитул, коллектор, удар головой, шапка, хедер заголовок, колонтитул, коллектор, удар головой, шапка, хедер</p>
+							</div>
+							<div class="task-item_info clearfix">
+								<a href="" class="pull-left"><img src="img/temp-img.png" alt=""></a>
+								<span class="task-item_time">?</span>
+							</div>
+						</div>
                     </div>
                 </div>
             </div>
             <div class="span3">
                 <div class="column-line">
                     <div class="column-line_task" id="js-progress">
-                        <div class="task-item">
-                            <div class="task-item_header">
-                                <h5 class="">Вёрстка задачи на доске</h5><span class="task-item_time">?</span>
-                            </div>
-                            <div class="task-item_content">
-                                <p>заголовок, колонтитул, коллектор, удар головой, шапка, хедер заголовок, колонтитул, коллектор, удар головой, шапка, хедер</p>
-                            </div>
-                            <div class="task-item_info clearfix">
-                                <a href="" class="pull-left">zfm-641</a>
-                                <a href="" class="pull-right"><img src="img/temp-img.png" alt=""></a>
-                            </div>
-                        </div>
+						<div class="task-item">
+							<div class="task-item_header">
+								<a href="" class="pull-left">#641</a>
+								<a href="" class="pull-right">ZFM</a>
+							</div>
+							<div class="task-item_content">
+								<h5 class="">Вёрстка задачи на доске</h5>
+								<p>заголовок, колонтитул, коллектор, удар головой, шапка, хедер заголовок, колонтитул, коллектор, удар головой, шапка, хедер</p>
+							</div>
+							<div class="task-item_info clearfix">
+								<a href="" class="pull-left"><img src="img/temp-img.png" alt=""></a>
+								<span class="task-item_time">?</span>
+							</div>
+						</div>
                     </div>
                 </div>
             </div>
             <div class="span3">
                 <div class="column-line">
                     <div class="column-line_task" id="js-test">
-                        <div class="task-item">
-                            <div class="task-item_header">
-                                <h5 class="">Вёрстка задачи на доске</h5><span class="task-item_time">?</span>
-                            </div>
-                            <div class="task-item_content">
-                                <p>заголовок, колонтитул, коллектор, удар головой, шапка, хедер заголовок, колонтитул, коллектор, удар головой, шапка, хедер</p>
-                            </div>
-                            <div class="task-item_info clearfix">
-                                <a href="" class="pull-left">zfm-641</a>
-                                <a href="" class="pull-right"><img src="img/temp-img.png" alt=""></a>
-                            </div>
-                        </div>
+						<div class="task-item">
+							<div class="task-item_header">
+								<a href="" class="pull-left">#641</a>
+								<a href="" class="pull-right">ZFM</a>
+							</div>
+							<div class="task-item_content">
+								<h5 class="">Вёрстка задачи на доске</h5>
+								<p>заголовок, колонтитул, коллектор, удар головой, шапка, хедер заголовок, колонтитул, коллектор, удар головой, шапка, хедер</p>
+							</div>
+							<div class="task-item_info clearfix">
+								<a href="" class="pull-left"><img src="img/temp-img.png" alt=""></a>
+								<span class="task-item_time">?</span>
+							</div>
+						</div>
                     </div>
                 </div>
             </div>
             <div class="span3">
                 <div class="column-line">
                     <div class="column-line_task" id="js-done">
-                        <div class="task-item">
-                            <div class="task-item_header">
-                                <h5 class="">Вёрстка задачи на доске</h5><span class="task-item_time">?</span>
-                            </div>
-                            <div class="task-item_content">
-                                <p>заголовок, колонтитул, коллектор, удар головой, шапка, хедер заголовок, колонтитул, коллектор, удар головой, шапка, хедер</p>
-                            </div>
-                            <div class="task-item_info clearfix">
-                                <a href="" class="pull-left">zfm-641</a>
-                                <a href="" class="pull-right"><img src="img/temp-img.png" alt=""></a>
-                            </div>
-                        </div>
+						<div class="task-item">
+							<div class="task-item_header">
+								<a href="" class="pull-left">#641</a>
+								<a href="" class="pull-right">ZFM</a>
+							</div>
+							<div class="task-item_content">
+								<h5 class="">Вёрстка задачи на доске</h5>
+								<p>заголовок, колонтитул, коллектор, удар головой, шапка, хедер заголовок, колонтитул, коллектор, удар головой, шапка, хедер</p>
+							</div>
+							<div class="task-item_info clearfix">
+								<a href="" class="pull-left"><img src="img/temp-img.png" alt=""></a>
+								<span class="task-item_time">?</span>
+							</div>
+						</div>
                     </div>
                 </div>
             </div>
@@ -242,6 +253,7 @@
 <script src="js/lib/underscore.js"></script>
 <script src="js/lib/backbone.js"></script>
 <script src="js/lib/bootstrap.js"></script>
+<script src="js/plugins/jquery.equalheights.js"></script>
 <script src="js/app/app.tasks.js"></script>
 <script src="js/app/app.task.js"></script>
 <script src="js/app/app.js"></script>
