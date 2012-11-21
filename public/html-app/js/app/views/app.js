@@ -28,9 +28,11 @@ App.AppView = Backbone.View.extend({
         console.log(App.Settings.currentUser.toJSON());
 
         this.boardView = new App.BoardView({
-            //el : $('wrapper'),
+            el : $('#content'),
             collection : App.issues
         });
+
+        this.boardView.render();
 
 
 
@@ -38,6 +40,8 @@ App.AppView = Backbone.View.extend({
 
     addIssueButtonClick : function (){
 
+        console.log('add issue');
+/*
         var issue = new App.Issue();
 
         if (!this.addIssueView) {
@@ -48,7 +52,7 @@ App.AppView = Backbone.View.extend({
 
         this.addIssueView.render();
         this.addIssueView.open();
-
+*/
     }
 
 

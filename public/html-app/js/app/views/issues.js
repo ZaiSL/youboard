@@ -14,11 +14,15 @@ App.IssueView = Backbone.View.extend({
     },
 
     initialize : function (){
+        this.tagName = this.template.tagName;
+        this.className = this.template.className;
 
     },
 
 
     render : function (){
+
+        this.$el.html(this.template.layout(this.model.toJSON()))
 
         return this;
     }
@@ -41,7 +45,8 @@ App.FeatureView = Backbone.View.extend({
     },
 
     initialize : function (){
-
+        this.tagName = this.template.tagName;
+        this.className = this.template.className;
     },
 
 
@@ -62,19 +67,46 @@ App.IssuesGroupView = Backbone.View.extend({
 
     template : App.JST['issues/group'],
 
+    $columns : null,
+
     events : {
 
 
     },
 
     initialize : function (){
+        this.tagName = this.template.tagName;
+        this.className = this.template.className;
 
+        this.$el.html(this.template.layout);
+        this.$columns = this.$('.column-line');
     },
-
 
     render : function (){
 
+        var self = this;
+
+        if (this.model){
+            //рендерим фичу
+            // prependTo(this.$el);
+        }
+
+
+        this.collection.each(function (issue){
+            self.addIssue(issue);
+        });
+
         return this;
+    },
+
+    addIssue : function (issue){
+        var issueView;
+
+        issueView = new App.IssueView({
+            model : issue
+        });
+
+        issueView.render().$el.appendTo(this.$columns[issue.get('stage')-1]);
     }
 
 });
@@ -87,6 +119,10 @@ App.BoardView = Backbone.View.extend({
 
     template : App.JST['issues/board'],
 
+    $groupsContainer : null,
+
+    groups : [],
+
     events : {
 
 
@@ -96,14 +132,43 @@ App.BoardView = Backbone.View.extend({
 
         this.collection.bind('reset', this.render, this);
 
+        this.$el.html(this.template.layout);
+
+        this.$groupsContainer = this.$('.issues-groups');
+
+
+        //разбили по группам
+        this.groups = [
+            {
+                feature : null,
+                issues : this.collection
+            }
+        ];
+
     },
 
 
     render : function (){
 
+        var i;
 
+        this.$groupsContainer.empty();
+        for (i=0; i<this.groups.length; i++){
+            this.addGroup(this.groups[i]);
+        }
 
         return this;
+    },
+
+    addGroup : function (group){
+        var groupView;
+
+        groupView = new App.IssuesGroupView({
+            model : group.feature,
+            collection : group.issues
+        });
+
+        groupView.render().$el.appendTo(this.$groupsContainer);
     }
 
 
