@@ -104,10 +104,29 @@
 		float: left;
 	}
 
-	p {
-		font-size: 13px;
-		clear: both;
-	}
+    &.us{
+      background: #D8F8FF;
+      .task-item_header {
+        background: #A7E2EF;
+        border-bottom: 1px solid #92CBD8;
+
+        a{
+          color: #17736D;
+        }
+      }
+    }
+
+    &.bug{
+      background: #FAE0EF;
+      .task-item_header {
+        background: #DE95C1;
+        border-bottom: 1px solid #C27AA5;
+
+        a{
+          color: #8D356A;
+        }
+      }
+    }
 }
 
 .task-item_info {
